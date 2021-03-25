@@ -8,8 +8,8 @@ from flask import (
     url_for,
 )
 from forms import (
-    RegistrationForm,
-    LoginForm,
+    SignInForm,
+    SignUpForm,
 )
 
 
@@ -34,9 +34,8 @@ POSTS = [
 
 
 @app.route('/')
-@app.route('/home')
-def home():
-    return render_template('home.html', posts=POSTS)
+def index():
+    return render_template('index.html', posts=POSTS)
 
 
 @app.route('/about')
@@ -44,22 +43,22 @@ def about():
     return render_template('about.html', title='About')
 
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    form = RegistrationForm()
+@app.route('/sign-up', methods=['GET', 'POST'])
+def sign_up():
+    form = SignUpForm()
     if form.validate_on_submit():
         flash(f'Account created for {form.username.data}!', 'success')
-        return redirect(url_for('home'))
-    return render_template('register.html', title='Register', form=form)
+        return redirect(url_for('index'))
+    return render_template('sign-up.html', title='Sign Up', form=form)
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
+@app.route('/sign-in', methods=['GET', 'POST'])
+def sign_in():
+    form = SignInForm()
     if form.validate_on_submit():
         flash('You have been logged in', 'success')
-        return redirect(url_for('home'))
-    return render_template('login.html', title='Login', form=form)
+        return redirect(url_for('index'))
+    return render_template('sign-in.html', title='Sign In', form=form)
 
 
 if __name__ == '__main__':

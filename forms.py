@@ -13,7 +13,7 @@ from wtforms.validators import (
 )
 
 
-class RegistrationForm(FlaskForm):
+class SignUpForm(FlaskForm):
     username = StringField(
         'Username',
         validators=[DataRequired(), Length(min=3, max=20)]
@@ -33,7 +33,7 @@ class RegistrationForm(FlaskForm):
     submit = SubmitField('Sign Up')
 
 
-class LoginForm(FlaskForm):
+class SignInForm(FlaskForm):
     email = StringField(
         'Email',
         validators=[DataRequired(), Email()]
