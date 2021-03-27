@@ -11,6 +11,8 @@ flask-sqlalchemy = "*"
 flask-bcrypt = "*"
 flask-login = "*"
 pillow = "*"
+itsdangerous = "*"
+flask-mail = "*"
 
 [dev-packages]
 
